@@ -1,0 +1,13 @@
+n=int(input())
+rev=0
+t=n
+while(n>0):
+    temp=n%10
+    rev=rev*10+temp
+    n=n//10
+print(rev)
+print(t)
+if(t==rev):
+    print("palindrome")
+else:
+    print("no")
