@@ -5,5 +5,5 @@ while(temp>=10):
 print(temp)
 last=n%10
 print(last)
-print(last+temp)
+
     
