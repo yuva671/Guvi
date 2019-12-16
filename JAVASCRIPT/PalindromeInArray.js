@@ -1,0 +1,1 @@
+console.log(['mum','dad','dfgdg'].filter(x=>(x.split('').reverse().join('')===x)))
