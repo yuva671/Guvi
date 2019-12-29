@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+   <div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6" style="background-color:lavender; height:200px">Team-1><button id="button" onclick="Runs()">Strike-Team1</button>
+    <div>
+    Run:<input id="random-number"type="textarea">
+       Score:<input id="sum"type="textarea">
+       Wickets:<input id="wicket"type="textarea">
+        </div></div>
+    <div class="col-lg-6" style="background-color:lavenderblush;">Team 2>
+    <button onclick="Runs1()">Strike-Team2</button>
+     <div>
+         Run:<input id="random-number1"type="textarea">
+         Score:<input id="sum1"type="textarea">
+         Wickets:<input id="wicket1"type="textarea">
+     </div>
+      </div> 
+      
+       </div>
+</div>
+    <a href='winner.html'><button id="winner" onclick="pass();">To know the Winner Click Here!!!</button></a>
+
+<script id="run">
+    let over1=[];
+    let over2=[];
+    let over3=[];
+    let count=0;
+    let score=0;
+    let player=1;
+    let b={};
+    let player_score=0;
+    
+    
+//    let z=1;
+    function Runs(){
+        let a=[];
+        if(count<=18){
+            console.log(count);
+            count++;
+        let runs=Math.floor(Math.random()*10)%6;
+        if(player<10){
+            player_score+=runs;
+            b[player]=player_score;
+            if(runs==0){
+            b[player]=player_score;
+                player++;
+                player_score=0;
+                
+//        alert("Player "+ player + " is out ");
+            }
+           
+            score=score+runs;
+            a.push(score);
+        if(count<=6){over1.push(runs);
+            }
+            if(count>6 && count<=12){over2.push(runs);
+            }
+            if(count>12 && count<=18){over3.push(runs);
+            }
+        document.getElementById('random-number').value=runs;
+        }
+            
+            document.getElementById("sum").value=score;
+        document.getElementById("wicket").value=player;
+            console.log(b);
+           var manOfTheMatch=Object.keys(b).reduce(function(a, c){ return b[a] > b[c] ? a : c });
+            console.log(manOfTheMatch);
+
+    return score;
+    }
+    }
+
+
+    let over11=[];
+    let over12=[];
+    let over13=[];
+    count1=0;
+    let score1=0;
+    let player1=0;
+    function Runs1(){
+        
+        let a1=[];
+        if(count1<18){
+            count1++;
+    
+       let runs1=Math.floor(Math.random()*10)%6;
+            if(player1<10){
+            if(runs1==0){
+            player1++;
+                console.log(player1);
+//        alert("Player "+ player1 + " is out ");
+        }
+            score1=score1+runs1;
+            a1.push(score1);
+        
+    
+            if(count1<=6){
+                over11.push(runs1);
+            }
+            if(count1>6 && count1<=12){
+                over12.push(runs1);
+            }
+            if(count1>12 && count1<=18){
+                over13.push(runs1);
+            }
+            
+            document.getElementById('random-number1').value=runs1;
+            }
+            document.getElementById("sum1").value=score1;
+            document.getElementById("wicket1").value=player1;
+        
+             
+        return score1;
+    }
+    }
+    
+
+    function passValues(){
+        var s=document.getElementById('sum').value;
+        localStorage.setItem("Tot-Score",s);
+        var s1=over1;
+        localStorage.setItem("over1",s1);
+        var s2=over2;
+        localStorage.setItem("over2",s2);
+        var s3=over3;
+        localStorage.setItem("over3",s3);
+        var w=document.getElementById("wicket").value;
+        localStorage.setItem("wickets",w);
+        var m=manOfTheMatch;
+        localStorage.setItem("man",m);
+        console.log(m);
+        
+        return false;
+    }
+    function passValues1(){
+        var s1=document.getElementById('sum1').value;
+        localStorage.setItem("Tot-Score1",s1);
+        var s_ov1=over11;
+        localStorage.setItem("over11",s_ov1);
+        var s_ov2=over12;
+        localStorage.setItem("over12",s_ov2);
+        var s_ov3=over13;
+        localStorage.setItem("over13",s_ov3);
+        var w=document.getElementById("wicket1").value;
+        localStorage.setItem("wickets1",w);
+        
+        return false;
+    }
+function pass(){
+    passValues();
+    passValues1();
+}
+
+</script>
+       
+</body>
+</html>

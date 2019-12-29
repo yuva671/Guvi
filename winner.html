@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Winner</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid">
+  
+  <div class="row">
+      <div class="col-lg-6" style="background-color:lavender;">Team-1<div>over1: <input type="textarea" id="ov1">
+      <div>over2: <input type="textarea" id="ov2"></div>
+      <div>over3: <input type="textarea" id="ov3"></div>
+      <div>Tot_score: <input type="textarea" id="Score"></div>
+      <div>Wickets: <input type="textarea" id="wic"></div>
+      <div>Man of the match: <input type="textarea" id="man1"></div>
+     </div></div>
+     
+      <div class="col-lg-6" style="background-color:lavenderblush;">Team-2<div>over11: <input type="textarea" id="ov11"></div>
+      <div>over12: <input type="textarea" id="ov12"></div>
+      <div>over13: <input type="textarea" id="ov13"></div>
+      <div>Tot_score: <input type="textarea" id="Score1"></div>
+      <div>Wickets: <input type="textarea" id="wic1"></div>
+      
+      </div>
+      <div>The Winner is: <input type="textarea" id="result"> </div>
+  </div>
+  
+</div>
+   <script>
+       document.getElementById("Score").value=localStorage.getItem("Tot-Score");
+       document.getElementById("Score1").value=localStorage.getItem("Tot-Score1");
+       document.getElementById("ov1").value=localStorage.getItem("over1");
+       document.getElementById("ov2").value=localStorage.getItem("over2");
+       document.getElementById("ov3").value=localStorage.getItem("over3");
+       document.getElementById("ov11").value=localStorage.getItem("over11");
+       document.getElementById("ov12").value=localStorage.getItem("over12");
+       document.getElementById("ov13").value=localStorage.getItem("over3");
+       document.getElementById("wic").value=localStorage.getItem("wickets");
+       document.getElementById("wic1").value=localStorage.getItem("wickets1");
+       document.getElementById("man1").value=localStorage.getItem("man");
+       if(document.getElementById('Score').value>document.getElementById('Score1').value){
+           document.getElementById("result").value="Team 1 Wins!!!"
+       }
+       else{
+           if(document.getElementById('Score').value<document.getElementById('Score1').value){
+               document.getElementById("result").value="Team 2 Wins!!!"
+           }
+           else{
+               document.getElementById("result").value="Draw"
+           }
+       }
+    </script>
+    
+</body>
+</html>
