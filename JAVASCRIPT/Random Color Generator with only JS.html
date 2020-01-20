@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var a=Math.random()%256;
+        // var a1=Math.random()%256;
+        // var a2=Math.random()%256;
+for(let i=0;i<screen.height-850;i++){
+    var a=document.createElement('div');
+        a.style.backgroundColor=getRandomColor();
+    a.style.width='50px';
+        a.style.height='250px';
+    a.style.color='red';
+    a.style.display='inline-block';
+    a.style.marginBottom='10px';
+    a.style.marginRight='10px';
+    
+        document.body.appendChild(a);
+}
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+        
+
+    </script>
+</body>
+</html>
