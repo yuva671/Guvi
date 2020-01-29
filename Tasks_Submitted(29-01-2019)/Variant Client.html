@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <style>
+        #div_0{
+            height:500px;
+            width: 700px;
+            
+            background-image: url("https://4.imimg.com/data4/YF/FY/MY-31619481/formal-shirt-500x500.jpg");
+            background-repeat: no-repeat; 
+              background-size: cover;
+            margin:  auto;
+        }
+        #div_1{
+            height: 1550px;
+            width: 700px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: auto;
+        
+        }
+        .common{
+        height="900px";
+       width="900px";
+       background-color: ="grey";
+        }
+        #price{
+            margin-left: 400px;
+        }
+        .in{
+            display: inline;
+        }
+        button{
+            height: 50px;
+            width: 75px;
+            background-color: bisque;
+            text-align: center;
+            margin-left: 5px;
+            font-family: cursive;
+        
+        }
+        p{
+            font-size: 50px;
+            font-family: cursive;
+            font-weight: 100;
+            color: black;
+        }
+        input{
+            height: 50px;
+            width: 150px;
+        }
+/*
+        body{
+            background-image: url("https://d2h53m62qt2m27.cloudfront.net/collection_pages/VB/amazing_logo_thumb.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+*/
+        
+    </style>
+</head>
+<body>
+  
+   <script>
+    var div=document.createElement('div');
+       div.className="Common";
+       
+    for(let i=0;i<2;i++){
+        var div1=document.createElement('div');
+        
+        div1.id="div_"+i;
+        div1.className="card";
+        div.appendChild(div1);
+        document.body.appendChild(div);
+
+        }
+    var p=document.createElement('p');
+    p.innerHTML="Shirt";
+//    p.style.fontSize="50px";
+    p.className="in";
+    div1.appendChild(p);
+    var p1=document.createElement('p');
+    p1.innerHTML="$500";
+    p1.className="in";
+    p1.id="price";
+    div1.appendChild(p1);
+    var p2=document.createElement('p');
+    p2.innerHTML="Size:";
+    div1.appendChild(p2);
+       
+    var p3=document.createElement('p');
+    p3.innerHTML="Material:";
+    div1.appendChild(p3);
+       
+    var p4=document.createElement('p');
+    p4.innerHTML="Color:";
+    div1.appendChild(p4);
+    
+    var size_button=document.createElement('select');
+    size_button.id='size';
+    size_button.options[size_button.options.length]=new Option('L');
+    size_button.options[size_button.options.length]=new Option('XL');
+    
+    var material=document.createElement('select');
+    material.id='material';
+    material.options[material.options.length]=new Option('Silk');
+    material.options[material.options.length]=new Option('Cotton');
+       
+    var color=document.createElement('select');
+    color.id='color';
+    color.options[color.options.length]=new Option('White');
+    color.options[color.options.length]=new Option('Blue');
+    
+    p2.appendChild(size_button);
+    p3.appendChild(material);
+    p4.appendChild(color);
+       
+       
+    var combinations=[{size: "L", color: "Blue", material: "Cotton",AddOnPrice:50},{size: "L", color: "White", material: "Cotton", AddOnPrice: 60},{size: "L", color: "Blue", material: "Silk", AddOnPrice: 70},{size: "L", color: "White", material: "Silk", AddOnPrice: 80},{size: "XL", color: "Blue", material: "Cotton", AddOnPrice: 90},{size: "XL", color: "White", material: "Cotton", AddOnPrice: 100},{size: "XL", color: "Blue", material: "Silk", AddOnPrice: 150},{size: "XL", color: "White", material: "Silk", AddOnPrice: 200}];
+
+    var sub=document.createElement('button');
+    div1.appendChild(sub);
+    sub.innerHTML="Add To Cart";
+    sub.style.width="150px";
+    sub.style.fontSize="20px";
+sub.addEventListener('click',submit);
+var dict={};  
+
+       function submit(){
+                  var aa1=document.getElementById('size').value;
+           console.log(aa1);
+           var aa2=document.getElementById('color').value;
+           var aa3=document.getElementById('material').value;
+            dict.size=aa1;
+           dict.color=aa2;
+           dict.material=aa3;
+           for(let i=0;i<combinations.length;i++){
+           if(combinations[i].size==dict.size && combinations[i].color==dict.color && combinations[i].material==dict.material){
+
+               dict.TotalPrice=combinations[i].AddOnPrice+500;
+               console.log(dict);
+               var result_div1=document.createElement('div');
+            var p5=document.createElement('p');
+            p5.innerHTML="Size:"+ aa1;
+            var p6=document.createElement('p');
+            p6.innerHTML="Material:"+ aa2;
+            var p7=document.createElement('p');
+            p7.innerHTML="Color:"+ aa3;
+            var p8=document.createElement('p');
+            p8.innerHTML="Total Price"+ dict.TotalPrice;
+            div1.appendChild(p5);
+            div1.appendChild(p6);
+            div1.appendChild(p7);
+            div1.appendChild(p8);
+//            document.body.appendChild(result_div1);
+
+           }
+               else{
+                   console.log("enter diff combo");
+               }
+            
+//            
+               
+       }
+           
+           
+       }
+       
+//submit();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="myLoader()">
+<div id="loader">
+  <p>loading....</p> 
+ </div> 
+
+        
+    
+    <div class="container">
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Realm</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                   
+                </tr>
+            </thead>
+            <tbody id='data1'>
+        </tbody>
+        </table>
+        
+    </div>
+    <div class="container">
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>createdAt</th>
+                    <th>name</th>
+                    <th>cover</th>
+                    <th>price</th>
+                    <th>ISBN</th>
+                   
+                </tr>
+            </thead>
+            <tbody id='data2'>
+        </tbody>
+        </table>
+        
+    </div>
+<!--    <div id='data'></div>-->
+    <script>
+     var a= document.getElementById('loader');
+     setTimeout(function myLoader(){
+      a.style.display="none";
+      },1000);
+
+    fetch('https://5cdd0a92b22718001417c19d.mockapi.io/api/users')
+        .then((response) => {
+    return response.json()
+    }).then((data) => {
+        console.log(data);
+        TableGeneration(data);
+        
+    })
+        .then(()=>{
+        return fetch("https://5cdd0a92b22718001417c19d.mockapi.io/api/books")
+        
+    })
+        .then((data1)=>{
+        return data1.json()
+    }).then((data2)=>{
+        console.log(data2)
+        TableGeneration1(data2);
+    })
+
+    let users=fetch('https://5cdd0a92b22718001417c19d.mockapi.io/api/users');
+    let books=fetch("https://5cdd0a92b22718001417c19d.mockapi.io/api/books")
+    Promise.all([users,books]).then((data)=>{
+        console.log(data);
+    })
+        
+        
+function TableGeneration(data){  
+        
+    if(data.length>0){
+        var temp="";
+ data.forEach(u => {
+            temp +="<tr>";
+                temp +="<td>"+u.id+"</td>";
+                temp +="<td>"+u.realm+"</td>";
+                temp +="<td>"+u.username+"</td>";
+                temp +="<td>"+u.password+"</td></tr>";
+                
+            
+        })
+        
+        document.getElementById('data1').innerHTML=temp;
+    }
+    }
+        
+function TableGeneration1(data){  
+        
+    if(data.length>0){
+        var temp="";
+ data.forEach(u => {
+            temp +="<tr>";
+                temp +="<td>"+u.id+"</td>";
+                temp +="<td>"+u.createdAt+"</td>";
+                temp +="<td>"+u.name+"</td>";
+                temp +="<td>"+u.cover+"</td>";
+     temp +="<td>"+u.price+"</td>";
+                temp +="<td>"+u.ISBN+"</td></tr>";
+                
+            
+        })
+        
+        document.getElementById('data2').innerHTML=temp;
+    }
+    }
+        
+ 
+    </script>
+</body>
+</html>

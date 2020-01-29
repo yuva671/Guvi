@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+   <script>
+    
+    var Myform=document.createElement('form');
+    var a=document.createElement('p');
+    a.innerHTML="Product Name:";
+    Myform.appendChild(a);
+    var productName=document.createElement('input');
+    productName.id="pro_name";
+    Myform.appendChild(productName);
+    var b=document.createElement('p');
+    b.innerHTML="Base Price:"
+    Myform.appendChild(b);
+    var basePrice=document.createElement('input');
+    basePrice.id="base_price";
+    Myform.appendChild(basePrice);
+    
+    var c=document.createElement('p');
+    c.innerHTML="Description:";
+    Myform.appendChild(c);
+    var description=document.createElement('input');
+    description.id="desc";
+    Myform.appendChild(description);
+    
+    var Myform1=document.createElement('form');
+    var a1=document.createElement('p');
+    a1.innerHTML="Variants:";
+    Myform1.appendChild(a1);
+    var b1=document.createElement('p');
+    b1.innerHTML="Size:";
+    Myform1.appendChild(b1);
+    var size=document.createElement('input');
+    size.id="sz";
+    Myform1.appendChild(size);
+    
+    var c1=document.createElement('p');
+    c1.innerHTML="Material:";
+    Myform1.appendChild(c1);
+    var material=document.createElement('input');
+    material.id="mat";
+    Myform1.appendChild(material);
+       
+    var d1=document.createElement('p');
+    d1.innerHTML="Color:";
+    Myform1.appendChild(d1);
+    var color=document.createElement('input');
+    color.id="col";
+    Myform1.appendChild(color);
+    
+    var button=document.createElement('button');
+    button.innerHTML="Submit";
+    Myform1.appendChild(button);
+    
+    document.body.appendChild(Myform);
+    document.body.appendChild(Myform1);
+    
+   
+
+    var Json={};
+    var variant1={};
+    var variant2={};
+    var variant3={};
+    var variant_details=[];
+     var size_values=[];
+    var mat_values=[];
+       var col_values=[];
+       var result = [];
+    function formToObj(){
+     var proName=a.innerHTML;
+    var proNameVal=document.getElementById('pro_name').value;
+     Json[proName]=proNameVal;
+     var BasePrice=b.innerHTML;
+     Json[BasePrice]=document.getElementById('base_price').value;
+    var Des=c.innerHTML;
+     Json[Des]=document.getElementById('desc').value;
+        console.log(Json);
+        var val=document.getElementById('sz').value;
+        console.log(val);
+        size_values.push(val.split(','));
+        console.log(size_values);
+    variant1.type='Size';
+    variant1.Values=size_values;
+
+        
+    var val1=document.getElementById('mat').value;
+    mat_values.push(val1.split(','));
+    variant2.type='Material';
+    variant2.Values=mat_values;
+    
+        
+    var val2=document.getElementById('col').value;
+    col_values.push(val2.split(','));
+    variant3.type='Color';
+    variant3.Values=col_values;
+    
+    var Variants=[variant1,variant2,variant3];
+    Json.Variants=Variants;
+ console.log(Variants);
+        
+console.log(Json);
+        
+generation();
+return Json;
+}
+
+function generation(){
+
+var combination=[];
+    console.log(size_values[0]);
+
+for(let i=0;i<size_values[0].length;i++)
+{
+    for(let j=0;j<col_values[0].length;j++)
+    {
+        for(let k=0;k<mat_values[0].length;k++)
+        {
+            var product={};
+            product.size=size_values[0][i];
+            console.log(size_values[0][i]);
+            product.color=col_values[0][j];
+            product.material=mat_values[0][k];
+            combination.push(product);
+            
+        }
+    }
+}
+console.log("overall:",combination);
+    Json.VariantDetails=combination;
+//    console.log(Json.VariantDetails[0]);
+
+
+       Json.VariantDetails[0].AddOnPrice=50;
+       Json.VariantDetails[1].AddOnPrice=60;
+       Json.VariantDetails[2].AddOnPrice=70;
+       Json.VariantDetails[3].AddOnPrice=80;
+       Json.VariantDetails[4].AddOnPrice=90;
+       Json.VariantDetails[5].AddOnPrice=100;
+       Json.VariantDetails[6].AddOnPrice=150;
+       Json.VariantDetails[7].AddOnPrice=200;
+       console.log(Json);
+}
+       
+button.setAttribute('onclick','formToObj();return false');
+    
+    
+    
+    
+    </script>
+    
+</body>
+</html>
